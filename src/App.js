@@ -1,4 +1,4 @@
-import preact from 'preact'
+import { h } from 'preact'
 
 function App () {
   return <h1>Ni hao!</h1>
