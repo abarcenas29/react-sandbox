@@ -7,8 +7,9 @@ module.exports = {
     filename: 'bundle.js'
   },
   devServer: {
-    inline: true,
     contentBase: './src',
+    historyApiFallback: true,
+    inline: true,
     port: 3333
   },
   resolve: {
