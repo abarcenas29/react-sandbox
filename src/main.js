@@ -1,6 +1,9 @@
 import { h, render } from 'preact'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 
+// semantic less
+import './semantic/semantic.less'
+
 import {
   Home,
   About,

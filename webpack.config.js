@@ -1,9 +1,12 @@
 var Webpack = require('webpack')
+var LessPluginAutoPrefix = require('less-plugin-autoprefix')
+var CleanCSSPlugin = require('less-plugin-clean-css')
+
 var webpack = {}
 if (process.env.NODE_ENV === 'production') {
-  webpack = require('./webpack/dev.js')
+  webpack = require('./internals/webpack.dev.js')
 } else {
-  webpack = require('./webpack/prod.js')
+  webpack = require('./webpack/webpack.prod.js')
 }
 
 var path = require('path')
@@ -22,15 +25,47 @@ webpack.output = {
 
 // general loaders
 webpack.module = {
-  loaders: [
+  rules: [
     {
       test: /\.html$/,
       loader: 'html-loader'
     },
     {
+      test: /\.less$/,
+      use: [
+        {loader: 'file-loader'},
+        {loader: 'css-loader'},
+        {
+          loader: 'less-loader',
+          options: {
+            noIeCompat: true,
+            sourceMap: true,
+            plugins: [
+              new LessPluginAutoPrefix(),
+              new CleanCSSPlugin({ advance: true })
+            ]
+          }
+        }
+      ]
+    },
+    {
+      test: /\.js$/,
+      exclude: path.resolve(__dirname, 'src'),
+      enforce: 'pre',
+      loader: 'source-map-loader'
+    },
+    {
       test: /\.js$/,
       exclude: /node_modules/,
       loader: 'babel-loader'
+    },
+    {
+      test: /\.json/,
+      loader: 'json-loader'
+    },
+    {
+      test: /\.(png|jpg|woff|woff2|eot|ttf|svg)(\?.*)?$/,
+      loader: 'file-loader?name=[path]/[name].[ext]?[hash]'
     }
   ]
 }
