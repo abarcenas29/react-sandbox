@@ -1,9 +1,9 @@
-import { h } from 'preact'
+import { h } from 'preact' // eslint-disable-line
 import Bundle from './Bundle.js'
 
-import loadHome from 'bundle-loader?lazy!./../components/Home'
-import loadAbout from 'bundle-loader?lazy!./../components/About'
-import loadContacts from 'bundle-loader?lazy!./../components/Contacts'
+import loadHome from 'bundle-loader?lazy!./../components/Home' // eslint-disable-line 
+import loadAbout from 'bundle-loader?lazy!./../components/About' // eslint-disable-line 
+import loadContacts from 'bundle-loader?lazy!./../components/Contacts' // eslint-disable-line 
 
 export const Home = () => (
   <Bundle load={loadHome}>
