@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack --config webpack.config.js",
-    "clean:build": "cleandir ~/build",
-    "server": "lite-server --baseDir=build",
+    "build": "yarn run clean:build && cross-env NODE_ENV=production webpack --config webpack.config.js",
+    "clean:build": "cleandir build",
+    "server": "lite-server -c webpack/bs-config.json",
     "start:dev": "cross-env NODE_ENV=development webpack-dev-server --progress",
     "start:prod": "yarn run build && yarn run server"
   },
