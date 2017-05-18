@@ -1,12 +1,13 @@
 var Webpack = require('webpack')
 var LessPluginAutoPrefix = require('less-plugin-autoprefix')
+var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var CleanCSSPlugin = require('less-plugin-clean-css')
 
 var webpack = {}
 if (process.env.NODE_ENV === 'production') {
   webpack = require('./internals/webpack.dev.js')
 } else {
-  webpack = require('./webpack/webpack.prod.js')
+  webpack = require('./internals/webpack.prod.js')
 }
 
 var path = require('path')
@@ -32,21 +33,25 @@ webpack.module = {
     },
     {
       test: /\.less$/,
-      use: [
-        {loader: 'file-loader'},
-        {loader: 'css-loader'},
-        {
-          loader: 'less-loader',
-          options: {
-            noIeCompat: true,
-            sourceMap: true,
-            plugins: [
-              new LessPluginAutoPrefix(),
-              new CleanCSSPlugin({ advance: true })
-            ]
+      use: ExtractTextPlugin.extract({
+        use: [
+          {loader: 'css-loader'},
+          {
+            loader: 'less-loader',
+            options: {
+              noIeCompat: true,
+              sourceMap: true,
+              plugins: [
+                new LessPluginAutoPrefix(),
+                new CleanCSSPlugin({
+                  advance: true,
+                  level: 2
+                })
+              ]
+            }
           }
-        }
-      ]
+        ]
+      })
     },
     {
       test: /\.js$/,

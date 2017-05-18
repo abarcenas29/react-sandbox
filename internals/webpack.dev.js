@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
 module.exports = {
   devServer: {
@@ -17,6 +18,9 @@ module.exports = {
       },
       showErrors: true,
       inject: true
+    }),
+    new ExtractTextPlugin({
+      filename: '[name].[contenthash].css'
     })
   ]
 }

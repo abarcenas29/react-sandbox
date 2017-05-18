@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const webpack = require('webpack')
 
 module.exports = {
@@ -6,7 +7,6 @@ module.exports = {
     // standard optimization
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
-      filename: 'vendors.js',
       children: true,
       minChunks: 2,
       async: true
@@ -60,6 +60,10 @@ module.exports = {
     new webpack.LoaderOptionsPlugin({
       minimize: true,
       debug: false
+    }),
+    new ExtractTextPlugin({
+      filename: '[name].[contenthash].css',
+      allChunks: true
     })
   ]
 }
