@@ -33,6 +33,7 @@
     ]
   },
   "dependencies": {
+    "immutable": "3.8.1",
     "preact": "8.1.0",
     "preact-compat": "3.16.0",
     "preact-router": "2.5.2",
