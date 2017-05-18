@@ -5,21 +5,22 @@ import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './semantic/semantic.less'
 
 import {
+  App,
   Home,
   About,
   Contacts
 } from './Routes/Route'
 
-const App = () => {
+const Main = () => {
   return (
     <Router>
-      <div>
+      <App>
         <Route exact path='/' component={Home} />
         <Route exact path='/about' component={About} />
         <Route exact path='/contact' component={Contacts} />
-      </div>
+      </App>
     </Router>
   )
 }
 
-render(<App />, document.getElementById('app'))
+render(<Main />, document.getElementById('app'))

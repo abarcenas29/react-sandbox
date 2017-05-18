@@ -4,41 +4,27 @@ const webpack = require('webpack')
 
 module.exports = {
   plugins: [
+    new webpack.LoaderOptionsPlugin({
+      minimize: true,
+      debug: false
+    }),
+    new webpack.optimize.UglifyJsPlugin({
+      beautify: false,
+      mangle: {
+        screw_ie8: true,
+        keep_fnames: true
+      },
+      compress: {
+        screw_ie8: true
+      },
+      comments: false
+    }),
     // standard optimization
     new webpack.optimize.CommonsChunkPlugin({
       name: 'vendor',
       children: true,
-      minChunks: 2,
+      minChunks: Infinity,
       async: true
-    }),
-    new webpack.optimize.UglifyJsPlugin({
-      output: {
-        comments: false
-      },
-      compress: {
-        booleans: true,
-        cascade: true,
-        collapse_vars: true,
-        comparisons: true,
-        conditionals: true,
-        dead_code: true,
-        drop_console: true,
-        drop_debugger: true,
-        evaluate: true,
-        hoist_funs: true,
-        if_return: true,
-        join_vars: true,
-        keep_fargs: false,
-        loops: true,
-        properties: true,
-        pure_getters: true,
-        screw_ie8: true,
-        sequences: true,
-        unsafe: true,
-        unsafe_comps: true,
-        unused: true,
-        warnings: false
-      }
     }),
     // HTML optimize
     new HtmlWebpackPlugin({
@@ -51,15 +37,9 @@ module.exports = {
         removeEmptyAttributes: true,
         removeStyleLinkTypeAttributes: true,
         keepClosingSlash: true,
-        minifyJS: true,
-        minifyCSS: true,
         minifyURLs: true
       },
       inject: true
-    }),
-    new webpack.LoaderOptionsPlugin({
-      minimize: true,
-      debug: false
     }),
     new ExtractTextPlugin({
       filename: '[name].[contenthash].css',

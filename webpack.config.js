@@ -5,9 +5,9 @@ var CleanCSSPlugin = require('less-plugin-clean-css')
 
 var webpack = {}
 if (process.env.NODE_ENV === 'production') {
-  webpack = require('./internals/webpack.dev.js')
-} else {
   webpack = require('./internals/webpack.prod.js')
+} else {
+  webpack = require('./internals/webpack.dev.js')
 }
 
 var path = require('path')
@@ -15,7 +15,7 @@ var path = require('path')
 // entry
 webpack.entry = {
   app: './src/main.js',
-  vendor: [ 'preact' ]
+  vendor: [ 'preact', 'semantic-ui-react' ]
 }
 
 webpack.output = {
