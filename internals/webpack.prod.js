@@ -21,11 +21,13 @@ module.exports = {
     }),
     // standard optimization
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      children: true,
+      name: 'commons',
       minChunks: Infinity,
-      async: true
+      async: true,
+      chunks: ['vendor', 'app']
     }),
+    // More minification
+    new webpack.optimize.AggressiveMergingPlugin(),
     // HTML optimize
     new HtmlWebpackPlugin({
       template: './src/index.html',

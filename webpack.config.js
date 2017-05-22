@@ -15,7 +15,7 @@ var path = require('path')
 // entry
 webpack.entry = {
   app: './src/main.js',
-  vendor: [ 'preact', 'semantic-ui-react' ]
+  vendor: [ 'preact', 'semantic-ui-react', 'lodash' ]
 }
 
 webpack.output = {

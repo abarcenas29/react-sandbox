@@ -1,9 +1,17 @@
 import { h, Component } from 'preact'
+import { connect } from 'react-redux'
+
+import { defaultAction } from './actions'
+
 import {
   Grid
 } from 'semantic-ui-react'
 
 class App extends Component {
+  componentWillMount () {
+    this.props.default({text: 'I am launched'})
+  }
+
   render () {
     return (
       <Grid>
@@ -21,4 +29,15 @@ class App extends Component {
   }
 }
 
-export default App
+const mapStateToProps = (store) => {
+  return {}
+}
+
+function mapDispatchToProps (dispatch) {
+  return {
+    default: payload => dispatch(defaultAction(payload)),
+    dispatch
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
