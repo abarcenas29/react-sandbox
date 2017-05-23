@@ -1,5 +1,6 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CompressionPlugin = require('compression-webpack-plugin')
 const webpack = require('webpack')
 
 module.exports = {
@@ -46,6 +47,13 @@ module.exports = {
     new ExtractTextPlugin({
       filename: '[name].[contenthash].css',
       allChunks: true
+    }),
+    new CompressionPlugin({
+      asset: '[path].gz[query]',
+      algorithm: 'zophil',
+      test: /\.js$|\.css$|\.html$/,
+      threshold: 10240,
+      minRatio: 0.8
     })
   ]
 }

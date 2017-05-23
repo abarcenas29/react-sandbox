@@ -35,6 +35,9 @@
   },
   "dependencies": {
     "axios": "0.16.1",
+    "express": "4.15.3",
+    "express-history-api-fallback": "2.2.1",
+    "express-static-gzip": "0.2.2",
     "immutable": "3.8.1",
     "preact": "8.1.0",
     "preact-compat": "3.16.0",
@@ -54,6 +57,7 @@
     "babel-preset-react": "6.24.1",
     "bundle-loader": "0.5.5",
     "clean-dir": "1.0.3",
+    "compression-webpack-plugin": "0.4.0",
     "cross-env": "5.0.0",
     "css-loader": "0.28.1",
     "env-cmd": "5.1.0",
