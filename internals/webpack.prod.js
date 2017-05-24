@@ -50,7 +50,7 @@ module.exports = {
     }),
     new CompressionPlugin({
       asset: '[path].gz[query]',
-      algorithm: 'zophil',
+      algorithm: 'zopfli',
       test: /\.js$|\.css$|\.html$/,
       threshold: 10240,
       minRatio: 0.8
