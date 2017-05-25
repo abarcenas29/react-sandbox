@@ -12,4 +12,7 @@ import reducers from './reducers'
 
 const reduxMiddleware = applyMiddleware(thunk)
 
-export default createStore(reducers, reduxMiddleware)
+export default createStore(
+  reducers,
+  reduxMiddleware
+)

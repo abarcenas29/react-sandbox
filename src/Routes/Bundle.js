@@ -1,6 +1,6 @@
-import { h, Component } from 'preact'
+import { h, Component } from 'preact' // eslint-disable-line
 
-class Bundle extends Component {
+export default class Bundle extends Component {
   constructor (props, context) {
     super(props, context)
     this.state = {
@@ -21,20 +21,21 @@ class Bundle extends Component {
   }
 
   load (props) {
-    this.setState({
-      mod: null
-    }, () => {
-      props.load(mod => {
-        this.setState({
-          mod: mod.default ? mod.default : mod
+    this.setState(
+      {
+        mod: null
+      },
+      () => {
+        props.load(mod => {
+          this.setState({
+            mod: mod.default ? mod.default : mod
+          })
         })
-      })
-    })
+      }
+    )
   }
 
-  render ({children}, { mod }) {
+  render ({ children }, { mod }) {
     return children[0](this.state.mod)
   }
 }
-
-export default Bundle

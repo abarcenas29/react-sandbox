@@ -1,13 +1,13 @@
 import { h, Component } from 'preact'
 import { Grid, Header } from 'semantic-ui-react'
 
-export default class Home extends Component {
+export default class NotFound extends Component {
   render () {
     return (
       <Grid>
         <Grid.Column width={16}>
           <Header as='h1'>
-            This is Contacts
+            This is 404 page
           </Header>
         </Grid.Column>
       </Grid>

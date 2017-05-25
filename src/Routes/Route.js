@@ -1,12 +1,20 @@
-import { h } from 'preact' // eslint-disable-line
+import { h } from 'preact'
 import Bundle from './Bundle.js'
 
-import loadApp from 'bundle-loader?lazy!./../containers/App' // eslint-disable-line 
-import loadHome from 'bundle-loader?lazy!./../containers/Home' // eslint-disable-line 
-import loadAbout from 'bundle-loader?lazy!./../containers/About' // eslint-disable-line 
-import loadContacts from 'bundle-loader?lazy!./../containers/Contacts' // eslint-disable-line 
+/* eslint-disable */
+import loadApp
+  from 'bundle-loader?lazy!./../containers/App'
+import loadHome
+  from 'bundle-loader?lazy!./../containers/Home'
+import loadAbout
+  from 'bundle-loader?lazy!./../containers/About'
+import loadContacts
+  from 'bundle-loader?lazy!./../containers/Contacts'
+import loadNotMatch
+  from 'bundle-loader?lazy!./../containers/NotFound'
+/* eslint-endable */
 
-export const App = ({children}) => (
+export const App = ({ children }) => (
   <Bundle load={loadApp}>
     {App => <App children={children} />}
   </Bundle>
@@ -29,5 +37,11 @@ export const About = () => (
 export const Contacts = () => (
   <Bundle load={loadContacts}>
     {Contacts => <Contacts />}
+  </Bundle>
+)
+
+export const NotFound = () => (
+  <Bundle load={loadNotMatch}>
+    {NotMatch => <NotMatch />}
   </Bundle>
 )

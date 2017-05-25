@@ -1,10 +1,8 @@
-import {
-  DEFAULT_ACTION
-} from './constants'
+import { DEFAULT_ACTION } from './constants'
 
 export function defaultAction (payload) {
-  return ({
+  return {
     type: DEFAULT_ACTION,
     payload: payload
-  })
+  }
 }

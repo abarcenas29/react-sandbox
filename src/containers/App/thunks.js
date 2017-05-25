@@ -3,6 +3,6 @@
  */
 // import axios from 'axios'
 
-export const requestAction = payload => (dispatch) => {
+export const requestAction = payload => dispatch => {
   return true
 }
