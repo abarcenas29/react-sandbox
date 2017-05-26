@@ -19,7 +19,8 @@
   "license": "ISC",
   "lint-staged": {
     "*.js": [
-      "prettier --print-width 60 --no-semi --single-quote --jsx-bracket-same-line -l --write",
+      "formatter",
+      "lint",
       "git add"
     ]
   },
