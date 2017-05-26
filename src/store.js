@@ -1,7 +1,4 @@
-import {
-  applyMiddleware,
-  createStore
-} from 'redux'
+import { applyMiddleware, createStore } from 'redux'
 
 /**
  * Since this boilerplate is for small-mid projects.
@@ -12,7 +9,4 @@ import reducers from './reducers'
 
 const reduxMiddleware = applyMiddleware(thunk)
 
-export default createStore(
-  reducers,
-  reduxMiddleware
-)
+export default createStore(reducers, reduxMiddleware)

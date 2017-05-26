@@ -7,15 +7,22 @@
     "build": "yarn run clean:build && cross-env NODE_ENV=production webpack --config webpack.config.js",
     "clean:build": "cleandir build",
     "lint": "eslint \"src/**/*.js\" --fix | snazzy",
-    "formatter": "prettier --print-width 50 --no-semi --single-quote --jsx-bracket-same-line  --write \"src/**/*.js\" && yarn run lint",
+    "precommit": "yarn run lint && lint-staged", 
+    "formatter": "prettier --print-width 60 --no-semi --single-quote --jsx-bracket-same-line  --write \"src/**/*.js\" && yarn run lint",
     "postinstall": "node ./scripts/semantic.fix.js",
-    "server": "lite-server -c internals/bs-config.json",
+    "server": "node server",
     "start:dev": "cross-env NODE_ENV=development webpack-dev-server --progress",
     "start:prod": "yarn run build && yarn run server",
-    "weppack:statistic": "webpack --json >  stats.json"
+    "webpack:statistic": "webpack --json >  stats.json"
   },
   "author": "",
   "license": "ISC",
+  "lint-staged": {
+    "./src/**/*.js": [
+      "prettier --print-width 60 --no-semi --single-quote --jsx-bracket-same-line -l --write",
+      "git add"
+    ]
+  },
   "babel": {
     "presets": [
       [

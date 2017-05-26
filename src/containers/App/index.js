@@ -33,13 +33,11 @@ const mapStateToProps = store => {
 
 function mapDispatchToProps (dispatch) {
   return {
-    default: payload =>
-      dispatch(defaultAction(payload)),
+    default: payload => dispatch(defaultAction(payload)),
     dispatch
   }
 }
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(
+  App
+)

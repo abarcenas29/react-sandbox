@@ -2,8 +2,7 @@ import { h } from 'preact'
 import Bundle from './Bundle.js'
 
 /* eslint-disable */
-import loadApp
-  from 'bundle-loader?lazy!./../containers/App'
+import loadApp from 'bundle-loader?lazy!./../containers/App'
 import loadHome
   from 'bundle-loader?lazy!./../containers/Home'
 import loadAbout

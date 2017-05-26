@@ -1,24 +1,13 @@
 import { h, render } from 'preact'
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from 'react-router-dom'
+import { BrowserRouter as Router } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import * as OfflinePluginRuntime
   from 'offline-plugin/runtime'
 import store from './store'
+import Routes from './routes'
 
 // semantic less
 import './semantic/semantic.less'
-
-import {
-  App,
-  Home,
-  About,
-  Contacts,
-  NotFound
-} from './routes/Route'
 
 const Main = () => {
   // NODE_ENV
@@ -27,28 +16,7 @@ const Main = () => {
   return (
     <Provider store={store}>
       <Router>
-        <App>
-          <Switch>
-            <Route
-              exact
-              path='/'
-              component={Home}
-            />
-            <Route
-              exact
-              path='/about'
-              component={About}
-            />
-            <Route
-              exact
-              path='/contact'
-              component={Contacts}
-            />
-            <Route
-              component={NotFound}
-            />
-          </Switch>
-        </App>
+        <Routes />
       </Router>
     </Provider>
   )
