@@ -18,7 +18,7 @@
   "author": "",
   "license": "ISC",
   "lint-staged": {
-    "./src/**/*.js": [
+    "*.js": [
       "prettier --print-width 60 --no-semi --single-quote --jsx-bracket-same-line -l --write",
       "git add"
     ]
