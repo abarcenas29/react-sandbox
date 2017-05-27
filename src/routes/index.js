@@ -6,6 +6,7 @@ import {
   Home,
   About,
   Contacts,
+  /* ROUTE HOOK */
   NotFound
 } from './Route'
 
@@ -16,6 +17,7 @@ const Routes = () => {
         <Route exact path='/' component={Home} />
         <Route path='/about' component={About} />
         <Route path='/contact' component={Contacts} />
+        {/* ROUTE GENERATOR */}
         <Route component={NotFound} />
       </Switch>
     </App>

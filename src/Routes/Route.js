@@ -11,7 +11,7 @@ import loadContacts
   from 'bundle-loader?lazy!./../containers/Contacts'
 import loadNotMatch
   from 'bundle-loader?lazy!./../containers/NotFound'
-/* eslint-endable */
+/* eslint-enable */
 
 export const App = ({ children }) => (
   <Bundle load={loadApp}>
@@ -44,3 +44,5 @@ export const NotFound = () => (
     {NotMatch => <NotMatch />}
   </Bundle>
 )
+
+/* BUNDLE GENERATOR */
