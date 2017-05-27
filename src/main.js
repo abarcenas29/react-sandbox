@@ -1,9 +1,9 @@
 import { h, render } from 'preact'
-import { BrowserRouter as Router } from 'react-router-dom'
+import { ConnectedRouter } from 'react-router-redux'
 import { Provider } from 'react-redux'
 import * as OfflinePluginRuntime
   from 'offline-plugin/runtime'
-import store from './store'
+import store, { history } from './store'
 import Routes from './routes'
 
 // semantic less
@@ -15,9 +15,9 @@ const Main = () => {
 
   return (
     <Provider store={store}>
-      <Router>
+      <ConnectedRouter history={history}>
         <Routes />
-      </Router>
+      </ConnectedRouter>
     </Provider>
   )
 }

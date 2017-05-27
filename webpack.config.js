@@ -2,7 +2,7 @@ var Webpack = require('webpack')
 var LessPluginAutoPrefix = require('less-plugin-autoprefix')
 var ExtractTextPlugin = require('extract-text-webpack-plugin')
 var CleanCSSPlugin = require('less-plugin-clean-css')
-var OfflinePlugin = require('offline-plugin')
+const OfflinePlugin = require('offline-plugin')
 
 var webpack = {}
 if (process.env.NODE_ENV === 'production') {
@@ -85,7 +85,6 @@ webpack.plugins.push(
   })
 )
 
-// offline plugin
 webpack.plugins.push(
   new OfflinePlugin()
 )
