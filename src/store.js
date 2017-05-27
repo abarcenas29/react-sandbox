@@ -5,15 +5,15 @@ import { routerMiddleware } from 'react-router-redux'
 import createHistory from 'history/createBrowserHistory'
 import logger from 'redux-logger'
 
-const history = createHistory()
-const routeMiddleware = routerMiddleware(history)
-
 /**
  * Since this boilerplate is for small-mid projects.
  * Thunk is more appropriate for this case
  */
 import thunk from 'redux-thunk'
 import reducers from './reducers'
+
+const history = createHistory()
+const routeMiddleware = routerMiddleware(history)
 
 const middleWears = [routeMiddleware, thunk, logger]
 
