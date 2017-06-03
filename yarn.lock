@@ -282,15 +282,6 @@ babel-core@6.24.1, babel-core@^6.24.1:
     slash "^1.0.0"
     source-map "^0.5.0"
 
-babel-eslint@^7.1.1:
-  version "7.2.3"
-  resolved "https://registry.yarnpkg.com/babel-eslint/-/babel-eslint-7.2.3.tgz#b2fe2d80126470f5c19442dc757253a897710827"
-  dependencies:
-    babel-code-frame "^6.22.0"
-    babel-traverse "^6.23.1"
-    babel-types "^6.23.0"
-    babylon "^6.17.0"
-
 babel-generator@^6.24.1:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-generator/-/babel-generator-6.24.1.tgz#e715f486c58ded25649d888944d52aa07c5d9497"
@@ -706,7 +697,7 @@ babel-template@^6.24.1:
     babylon "^6.11.0"
     lodash "^4.2.0"
 
-babel-traverse@^6.23.1, babel-traverse@^6.24.1:
+babel-traverse@^6.24.1:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-traverse/-/babel-traverse-6.24.1.tgz#ab36673fd356f9a0948659e7b338d5feadb31695"
   dependencies:
@@ -720,7 +711,7 @@ babel-traverse@^6.23.1, babel-traverse@^6.24.1:
     invariant "^2.2.0"
     lodash "^4.2.0"
 
-babel-types@^6.19.0, babel-types@^6.23.0, babel-types@^6.24.1:
+babel-types@^6.19.0, babel-types@^6.24.1:
   version "6.24.1"
   resolved "https://registry.yarnpkg.com/babel-types/-/babel-types-6.24.1.tgz#a136879dc15b3606bda0d90c1fc74304c2ff0975"
   dependencies:
@@ -733,7 +724,7 @@ babylon@7.0.0-beta.8:
   version "7.0.0-beta.8"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-7.0.0-beta.8.tgz#2bdc5ae366041442c27e068cce6f0d7c06ea9949"
 
-babylon@^6.11.0, babylon@^6.15.0, babylon@^6.17.0:
+babylon@^6.11.0, babylon@^6.15.0:
   version "6.17.0"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.17.0.tgz#37da948878488b9c4e3c4038893fa3314b3fc932"
 
@@ -1877,16 +1868,15 @@ escope@^3.6.0:
     esrecurse "^4.1.0"
     estraverse "^4.1.1"
 
-eslint-config-standard-jsx@^3.0.0:
-  version "3.3.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-standard-jsx/-/eslint-config-standard-jsx-3.3.0.tgz#cab0801a15a360bf63facb97ab22fbdd88d8a5e0"
+eslint-config-standard-jsx@^4.0.0:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-standard-jsx/-/eslint-config-standard-jsx-4.0.1.tgz#cd4e463d0268e2d9e707f61f42f73f5b3333c642"
 
-eslint-config-standard-preact@1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/eslint-config-standard-preact/-/eslint-config-standard-preact-1.0.1.tgz#a569681f3c432f024c8c52c18cf49a3e0d42578c"
+eslint-config-standard-react@5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-standard-react/-/eslint-config-standard-react-5.0.0.tgz#64c7b8140172852be810a53d48ee87649ff178e3"
   dependencies:
-    babel-eslint "^7.1.1"
-    eslint-config-standard-jsx "^3.0.0"
+    eslint-config-standard-jsx "^4.0.0"
 
 eslint-config-standard@10.2.1:
   version "10.2.1"
@@ -4527,15 +4517,9 @@ preact-compat@3.16.0:
     prop-types "^15.5.8"
     standalone-react-addons-pure-render-mixin "^0.1.1"
 
-preact-render-to-string@3.6.3:
+preact-render-to-string@^3.6.0:
   version "3.6.3"
   resolved "https://registry.yarnpkg.com/preact-render-to-string/-/preact-render-to-string-3.6.3.tgz#481d0d5bdac9192d3347557437d5cd00aa312043"
-  dependencies:
-    pretty-format "^3.5.1"
-
-preact-render-to-string@^3.6.0:
-  version "3.6.1"
-  resolved "https://registry.yarnpkg.com/preact-render-to-string/-/preact-render-to-string-3.6.1.tgz#3be5dfc4e917fbe619398374deaa5b8f717ddf7c"
   dependencies:
     pretty-format "^3.5.1"
 
