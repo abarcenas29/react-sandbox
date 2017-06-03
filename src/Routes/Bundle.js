@@ -1,4 +1,4 @@
-import { h, Component } from 'preact' // eslint-disable-line
+import React, { Component } from 'react' // eslint-disable-line
 
 export default class Bundle extends Component {
   constructor (props, context) {
@@ -36,6 +36,6 @@ export default class Bundle extends Component {
   }
 
   render ({ children }, { mod }) {
-    return children[0](this.state.mod)
+    return children(this.state.mod)
   }
 }

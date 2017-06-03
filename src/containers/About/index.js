@@ -1,4 +1,4 @@
-import { h, Component } from 'preact'
+import React, { Component } from 'react'
 import { Grid, Header } from 'semantic-ui-react'
 
 export default class Home extends Component {

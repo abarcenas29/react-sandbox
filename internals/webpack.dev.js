@@ -6,7 +6,6 @@ module.exports = {
     contentBase: './src',
     historyApiFallback: true,
     inline: true,
-    open: true,
     port: 3333,
     publicPath: '/'
   },

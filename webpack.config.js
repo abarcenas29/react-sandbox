@@ -5,10 +5,22 @@ var CleanCSSPlugin = require('less-plugin-clean-css')
 const OfflinePlugin = require('offline-plugin')
 
 var webpack = {}
+let filename = ''
+let chunkFilename = '[name]-[chunkhash].js'
 if (process.env.NODE_ENV === 'production') {
   webpack = require('./internals/webpack.prod.js')
+  // entry
+  webpack.entry = {
+    app: './src/main.js',
+    vendor: [ 'preact', 'semantic-ui-react', 'lodash' ]
+  }
+  filename = 'bundle.[chunkhash].js'
 } else {
   webpack = require('./internals/webpack.dev.js')
+  webpack.entry = [
+    './src/main.js'
+  ]
+  filename = '[name].bundle.js'
 }
 
 var path = require('path')
@@ -22,7 +34,8 @@ webpack.entry = {
 webpack.output = {
   path: path.resolve(__dirname, 'build'),
   publicPath: '/',
-  filename: 'bundle.[chunkhash].js'
+  filename,
+  chunkFilename
 }
 
 // general loaders
@@ -91,6 +104,7 @@ webpack.plugins.push(
 
 // resolve for preact
 webpack.resolve = {
+  extensions: ['.js'],
   alias: {
     'react': 'preact-compat',
     'react-dom': 'preact-compat'

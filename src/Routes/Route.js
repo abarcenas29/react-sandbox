@@ -1,4 +1,4 @@
-import { h } from 'preact'
+import React from 'react'
 import Bundle from './Bundle.js'
 
 /* eslint-disable */

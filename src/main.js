@@ -1,30 +1,33 @@
-import { h, render } from 'preact'
-import { ConnectedRouter } from 'react-router-redux'
-import { Provider } from 'react-redux'
+import React from 'react'
+import { render } from 'react-dom'
 import * as OfflinePluginRuntime
   from 'offline-plugin/runtime'
-import store, { history } from './store'
-import Routes from './routes'
+import App from './App'
+import renderString from 'preact-render-to-string'
 
 // semantic less
 import './semantic/semantic.less'
 
-const Main = () => {
+const container = document.getElementById('app')
+
+const init = () => {
   // NODE_ENV
   console.info('NODE_ENV', process.env.NODE_ENV)
+  let app = <App />
+  let stringRender = renderString(<App />)
 
-  return (
-    <Provider store={store}>
-      <ConnectedRouter history={history}>
-        <Routes />
-      </ConnectedRouter>
-    </Provider>
-  )
+  console.log(stringRender)
+  render(<App />, container)
 }
 
-render(<Main />, document.getElementById('app'))
+init()
 
 /** PWA */
 if (process.env.NODE_ENV === 'production') {
   OfflinePluginRuntime.install()
+}
+
+if (module.hot) {
+  module.hot.accept()
+  module.hot.accept('./App', () => init())
 }
