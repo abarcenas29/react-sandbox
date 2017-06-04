@@ -12,7 +12,7 @@ if (process.env.NODE_ENV === 'production') {
   // entry
   webpack.entry = {
     app: './src/main.js',
-    vendor: [ 'preact', 'semantic-ui-react', 'lodash' ]
+    vendor: [ 'react', 'semantic-ui-react', 'lodash' ]
   }
   filename = 'bundle.[chunkhash].js'
 } else {
@@ -26,10 +26,6 @@ if (process.env.NODE_ENV === 'production') {
 var path = require('path')
 
 // entry
-webpack.entry = {
-  app: './src/main.js',
-  vendor: [ 'preact', 'semantic-ui-react', 'lodash' ]
-}
 
 webpack.output = {
   path: path.resolve(__dirname, 'build'),
@@ -101,14 +97,5 @@ webpack.plugins.push(
 webpack.plugins.push(
   new OfflinePlugin()
 )
-
-// resolve for preact
-webpack.resolve = {
-  extensions: ['.js'],
-  alias: {
-    'react': 'preact-compat',
-    'react-dom': 'preact-compat'
-  }
-}
 
 module.exports = webpack

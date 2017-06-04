@@ -15,33 +15,57 @@ import loadNotMatch
 
 export const App = ({ children }) => (
   <Bundle load={loadApp}>
-    {App => <App children={children} />}
+    {App => {
+      return (
+        <div>
+          {App
+            ? <App children={children} />
+            : <p>Loading</p>}
+        </div>
+      )
+    }}
   </Bundle>
 )
 
 export const Home = () => (
   <Bundle load={loadHome}>
     {Home => {
-      return <Home />
+      return (
+        <div>
+          {Home ? <Home /> : <p>Loading</p>}
+        </div>
+      )
     }}
   </Bundle>
 )
 
 export const About = () => (
   <Bundle load={loadAbout}>
-    {About => <About />}
+    {About => (
+      <div>
+        {About ? <About /> : <p>Loading</p>}
+      </div>
+    )}
   </Bundle>
 )
 
 export const Contacts = () => (
   <Bundle load={loadContacts}>
-    {Contacts => <Contacts />}
+    {Contacts => (
+      <div>
+        {Contacts ? <Contacts /> : <p>Loading</p>}
+      </div>
+    )}
   </Bundle>
 )
 
 export const NotFound = () => (
   <Bundle load={loadNotMatch}>
-    {NotMatch => <NotMatch />}
+    {NotMatch => (
+      <div>
+        {NotMatch ? <NotMatch /> : <p>Loading</p>}
+      </div>
+    )}
   </Bundle>
 )
 

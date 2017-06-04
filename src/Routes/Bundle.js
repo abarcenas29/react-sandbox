@@ -14,7 +14,7 @@ export default class Bundle extends Component {
     this.load(this.props)
   }
 
-  componentWillRecieveProps (nextProps) {
+  componentWillReceiveProps (nextProps) {
     if (nextProps.load !== this.props.load) {
       this.load(nextProps)
     }
@@ -35,7 +35,9 @@ export default class Bundle extends Component {
     )
   }
 
-  render ({ children }, { mod }) {
-    return children(this.state.mod)
+  render () {
+    const { children } = this.props
+    const { mod } = this.state
+    return children(mod)
   }
 }
