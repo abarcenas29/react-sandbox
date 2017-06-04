@@ -1,5 +1,7 @@
+import 'react-hot-loader/patch'
 import React from 'react'
 import { render } from 'react-dom'
+import { AppContainer } from 'react-hot-loader'
 import * as OfflinePluginRuntime
   from 'offline-plugin/runtime'
 import App from './App'
@@ -12,7 +14,12 @@ const container = document.getElementById('app')
 const init = () => {
   // NODE_ENV
   console.info('NODE_ENV', process.env.NODE_ENV)
-  render(<App />, container)
+  render(
+    <AppContainer>
+      <App />
+    </AppContainer>,
+    container
+  )
 }
 
 init()
