@@ -26,7 +26,6 @@ if (process.env.NODE_ENV === 'production') {
 var path = require('path')
 
 // entry
-
 webpack.output = {
   path: path.resolve(__dirname, 'build'),
   publicPath: '/',
@@ -97,5 +96,13 @@ webpack.plugins.push(
 webpack.plugins.push(
   new OfflinePlugin()
 )
+
+webpack.resolve = {
+  extensions: ['.js'],
+  alias: {
+    'containers': path.resolve(__dirname, 'src', 'containers'),
+    'components': path.resolve(__dirname, 'src', 'components')
+  }
+}
 
 module.exports = webpack

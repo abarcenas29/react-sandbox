@@ -1,7 +1,17 @@
 export const {{componentName}} = () => {
   return (
     <Bundle load={ load{{componentName}} }>
-      { {{componentName}} => { return <{{componentName}} /> } }
+      { {{componentName}} => { 
+        return (
+          <div>
+            {
+              App
+              ? <{{componentName}} children={children} />
+              : <p>Loading</p>
+            }
+          </div>
+        )
+      } }
     </Bundle>
   )
 }
