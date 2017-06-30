@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Grid, Header } from 'semantic-ui-react'
+import { Grid, Header, Image } from 'semantic-ui-react'
 
 export default class Home extends Component {
   render () {
@@ -9,6 +9,7 @@ export default class Home extends Component {
           <Header as='h1'>
             This is the header
           </Header>
+          <Image src='https://via.placeholder.com/350x150' />
         </Grid.Column>
       </Grid>
     )
