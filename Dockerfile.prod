@@ -1,0 +1,11 @@
+FROM node:7.10.1
+
+ENV HOME=/home/app
+COPY . $HOME/react/
+RUN npm install yarn -g
+
+WORKDIR $HOME/react
+RUN yarn
+CMD ["yarn", "start:prod"]
+
+

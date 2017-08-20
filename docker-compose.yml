@@ -1,0 +1,7 @@
+react:
+  build: .
+  ports:
+   - 3100:3100
+  volumes:
+    - .:/home/app/react
+    - /home/app/react/node_modules

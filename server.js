@@ -3,7 +3,7 @@ const expressStaticGzip = require('express-static-gzip')
 const express = require('express')
 const app = express()
 
-app.set('port', (process.env.PORT || 3333))
+app.set('port', (process.env.PORT || 3100))
 
 // serve compress js/css files for bandwidth saving
 app.use('/', expressStaticGzip('./build', {
