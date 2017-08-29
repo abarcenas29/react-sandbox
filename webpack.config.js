@@ -11,8 +11,7 @@ if (process.env.NODE_ENV === 'production') {
   webpack = require('./internals/webpack.prod.js')
   // entry
   webpack.entry = {
-    app: './src/main.js',
-    vendor: [ 'react', 'semantic-ui-react', 'lodash' ]
+    app: './src/main.js'
   }
   filename = 'bundle.[chunkhash].js'
 } else {

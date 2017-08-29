@@ -4,8 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "build:dll": "yarn run clean:dll && cross-env BUILD_DLL=true webpack --display-chunks --color --config internals/dll.webpack.js --progress --hide-modules",
     "build": "yarn run clean:build && cross-env NODE_ENV=production parallel-webpack --config=webpack.config.js --progress --color --hide-modules",
     "clean:build": "cleandir build",
+    "clean:dll": "cleandir dlls",
     "eject": "rimraf .git",
     "formatter": "prettier --print-width 60 --no-semi --single-quote --jsx-bracket-same-line  --write \"src/**/*.js\"",
     "lint": "eslint \"src/**/*.js\" --fix | snazzy",
@@ -15,7 +17,7 @@
     "precommit": "yarn run lint && lint-staged",
     "server": "node server",
     "start:dev": "cross-env NODE_ENV=development webpack-dev-server --progress --hot",
-    "start:prod": "yarn run postinstall && yarn run build && yarn run server",
+    "start:prod": "yarn run postinstall && yarn run build:dll && yarn run build && yarn run server",
     "start:production": "yarn run server",
     "webpack:statistic": "webpack --json >  stats.json"
   },
@@ -59,6 +61,7 @@
     "react-router-redux": "next",
     "redux": "3.6.0",
     "redux-thunk": "2.2.0",
+    "reselect": "3.0.1",
     "semantic-ui-react": "0.68.3",
     "styled-components": "1.4.6"
   },

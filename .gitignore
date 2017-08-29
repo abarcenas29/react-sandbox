@@ -1,4 +1,5 @@
 .vscode
+dlls
 build
 node_modules
 stats.json

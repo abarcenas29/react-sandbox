@@ -1,0 +1,8 @@
+version: '3.1'
+services:
+  react:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - 3100:3100

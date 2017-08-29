@@ -2,7 +2,9 @@ import { fromJS } from 'immutable'
 
 import { DEFAULT_ACTION } from './constants'
 
-const initialState = fromJS({})
+const initialState = fromJS({
+  test: 'You can see me'
+})
 
 function reducer (state = initialState, { type, payload }) {
   switch (type) {

@@ -3,6 +3,8 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
+const path = require('path')
+const projectDir = require('./../settings').PROJECT_DIR
 
 module.exports = {
   plugins: [
@@ -20,13 +22,6 @@ module.exports = {
         screw_ie8: true
       },
       comments: false
-    }),
-    // standard optimization
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'commons',
-      minChunks: Infinity,
-      async: true,
-      chunks: ['vendor', 'app']
     }),
     // More minification
     new webpack.optimize.AggressiveMergingPlugin(),
@@ -51,13 +46,25 @@ module.exports = {
     }),
     new CompressionPlugin({
       asset: '[path].gz[query]',
-      algorithm: 'zopfli',
+      algorithm: 'gzip',
       test: /\.js$|\.css$|\.html$/,
       threshold: 10240,
       minRatio: 0.8
     }),
     new CopyWebpackPlugin([
       { from: './src/assets', to: './assets' }
-    ])
+    ]),
+    new webpack.DllReferencePlugin({
+      context: projectDir,
+      manifest: path.join(projectDir, 'dlls', 'react.json')
+    }),
+    new webpack.DllReferencePlugin({
+      context: projectDir,
+      manifest: path.join(projectDir, 'dlls', 'redux.json')
+    }),
+    new webpack.DllReferencePlugin({
+      context: projectDir,
+      manifest: path.join(projectDir, 'dlls', 'styles.json')
+    })
   ]
 }
