@@ -3,8 +3,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const webpack = require('webpack')
-const path = require('path')
-const projectDir = require('./../settings').PROJECT_DIR
 
 module.exports = {
   plugins: [
@@ -53,18 +51,6 @@ module.exports = {
     }),
     new CopyWebpackPlugin([
       { from: './src/assets', to: './assets' }
-    ]),
-    new webpack.DllReferencePlugin({
-      context: projectDir,
-      manifest: path.join(projectDir, 'dlls', 'react.json')
-    }),
-    new webpack.DllReferencePlugin({
-      context: projectDir,
-      manifest: path.join(projectDir, 'dlls', 'redux.json')
-    }),
-    new webpack.DllReferencePlugin({
-      context: projectDir,
-      manifest: path.join(projectDir, 'dlls', 'styles.json')
-    })
+    ])
   ]
 }
