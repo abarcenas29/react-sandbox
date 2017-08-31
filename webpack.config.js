@@ -93,7 +93,7 @@ webpack.plugins.push(
   }),
   new HappyPack({
     id: 'jsx',
-    loaders: ['babel-loaders']
+    loaders: ['babel-loader']
   }),
   new HappyPack({
     id: 'styles',
