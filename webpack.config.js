@@ -3,6 +3,7 @@ const LessPluginAutoPrefix = require('less-plugin-autoprefix')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CleanCSSPlugin = require('less-plugin-clean-css')
 const OfflinePlugin = require('offline-plugin')
+const HappyPack = require('happypack')
 
 const path = require('path')
 const projectDir = require('./settings').PROJECT_DIR
@@ -43,23 +44,7 @@ webpack.module = {
     {
       test: /\.less$/,
       use: ExtractTextPlugin.extract({
-        use: [
-          {loader: 'css-loader'},
-          {
-            loader: 'less-loader',
-            options: {
-              noIeCompat: true,
-              sourceMap: true,
-              plugins: [
-                new LessPluginAutoPrefix(),
-                new CleanCSSPlugin({
-                  advance: true,
-                  level: 2
-                })
-              ]
-            }
-          }
-        ]
+        loader: 'happypack/loader?id=styles'
       })
     },
     {
@@ -71,7 +56,7 @@ webpack.module = {
     {
       test: /\.js$/,
       exclude: /node_modules/,
-      loader: 'babel-loader'
+      loader: 'happypack/loader?id=jsx'
     },
     {
       test: /\.json/,
@@ -105,6 +90,30 @@ webpack.plugins.push(
     context: path.join(projectDir, 'src'),
     name: '[name]',
     manifest: path.join(projectDir, 'dlls', 'styles.json')
+  }),
+  new HappyPack({
+    id: 'jsx',
+    loaders: ['babel-loaders']
+  }),
+  new HappyPack({
+    id: 'styles',
+    loaders: [
+      {loader: 'css-loader'},
+      {
+        loader: 'less-loader',
+        options: {
+          noIeCompat: true,
+          sourceMap: true,
+          plugins: [
+            new LessPluginAutoPrefix(),
+            new CleanCSSPlugin({
+              advance: true,
+              level: 2
+            })
+          ]
+        }
+      }
+    ]
   })
 )
 
