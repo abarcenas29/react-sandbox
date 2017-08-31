@@ -1,5 +1,6 @@
 .vscode
-dlls
 build
+dlls
 node_modules
 stats.json
+yarn-error.log
