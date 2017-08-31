@@ -52,7 +52,7 @@ class App extends Component {
         </Grid.Column>
         <Grid.Column width={16}>
           <Link to='/about'>About</Link>
-          This is the footer
+          This is the footer 111
         </Grid.Column>
       </Grid>
     )

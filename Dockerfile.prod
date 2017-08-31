@@ -8,6 +8,6 @@ RUN npm install yarn -g
 WORKDIR $HOME/react
 RUN mkdir build && mkdir dlls
 RUN yarn
-CMD ["yarn", "start:prod"]
+ENTRYPOINT ["yarn", "start:prod"]
 
 
