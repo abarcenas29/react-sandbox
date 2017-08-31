@@ -44,7 +44,23 @@ webpack.module = {
     {
       test: /\.less$/,
       use: ExtractTextPlugin.extract({
-        loader: 'happypack/loader?id=styles'
+        use: [
+          {loader: 'css-loader'},
+          {
+            loader: 'less-loader',
+            options: {
+              noIeCompat: true,
+              sourceMap: true,
+              plugins: [
+                new LessPluginAutoPrefix(),
+                new CleanCSSPlugin({
+                  advance: true,
+                  level: 2
+                })
+              ]
+            }
+          }
+        ]
       })
     },
     {
@@ -94,26 +110,6 @@ webpack.plugins.push(
   new HappyPack({
     id: 'jsx',
     loaders: ['babel-loader']
-  }),
-  new HappyPack({
-    id: 'styles',
-    loaders: [
-      {loader: 'css-loader'},
-      {
-        loader: 'less-loader',
-        options: {
-          noIeCompat: true,
-          sourceMap: true,
-          plugins: [
-            new LessPluginAutoPrefix(),
-            new CleanCSSPlugin({
-              advance: true,
-              level: 2
-            })
-          ]
-        }
-      }
-    ]
   })
 )
 
