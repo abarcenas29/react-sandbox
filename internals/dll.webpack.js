@@ -17,7 +17,7 @@ module.exports = {
       'redux-thunk',
       'reselect'
     ],
-    styles: ['semantic-ui-react', 'styled-components']
+    styles: ['semantic-ui-react', 'styled-components', 'semantic-ui-less']
   },
   output: {
     filename: '[name].dll.js',
