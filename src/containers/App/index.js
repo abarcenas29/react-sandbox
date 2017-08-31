@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
+import { createStructuredSelector } from 'reselect'
 import { connect } from 'react-redux'
 import { push } from 'react-router-redux'
 import { Link } from 'react-router-dom'
 
 import { defaultAction } from './actions'
+import { testSelector } from './selector'
 
 import { Grid, Menu, Header } from 'semantic-ui-react'
 
@@ -50,16 +52,16 @@ class App extends Component {
         </Grid.Column>
         <Grid.Column width={16}>
           <Link to='/about'>About</Link>
-          This is the footer
+          This is the footer 111
         </Grid.Column>
       </Grid>
     )
   }
 }
 
-const mapStateToProps = store => {
-  return {}
-}
+const mapStateToProps = createStructuredSelector({
+  test: testSelector()
+})
 
 function mapDispatchToProps (dispatch) {
   return {

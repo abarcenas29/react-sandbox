@@ -1,4 +1,4 @@
-import React, { Component } from 'react' // eslint-disable-line
+import React, { Component } from 'react'
 
 export default class Bundle extends Component {
   constructor (props, context) {

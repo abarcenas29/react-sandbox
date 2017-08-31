@@ -8,7 +8,7 @@ import {
   Contacts,
   /* ROUTE HOOK */
   NotFound
-} from './Route'
+} from './Routes'
 
 const Routes = () => {
   return (

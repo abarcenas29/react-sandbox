@@ -1,8 +1,12 @@
-var Webpack = require('webpack')
-var LessPluginAutoPrefix = require('less-plugin-autoprefix')
-var ExtractTextPlugin = require('extract-text-webpack-plugin')
-var CleanCSSPlugin = require('less-plugin-clean-css')
+const Webpack = require('webpack')
+const LessPluginAutoPrefix = require('less-plugin-autoprefix')
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CleanCSSPlugin = require('less-plugin-clean-css')
 const OfflinePlugin = require('offline-plugin')
+const HappyPack = require('happypack')
+
+const path = require('path')
+const projectDir = require('./settings').PROJECT_DIR
 
 var webpack = {}
 let filename = ''
@@ -11,8 +15,7 @@ if (process.env.NODE_ENV === 'production') {
   webpack = require('./internals/webpack.prod.js')
   // entry
   webpack.entry = {
-    app: './src/main.js',
-    vendor: [ 'react', 'semantic-ui-react', 'lodash' ]
+    app: './src/main.js'
   }
   filename = 'bundle.[chunkhash].js'
 } else {
@@ -22,8 +25,6 @@ if (process.env.NODE_ENV === 'production') {
   ]
   filename = '[name].bundle.js'
 }
-
-var path = require('path')
 
 // entry
 webpack.output = {
@@ -71,7 +72,7 @@ webpack.module = {
     {
       test: /\.js$/,
       exclude: /node_modules/,
-      loader: 'babel-loader'
+      loader: 'happypack/loader?id=jsx'
     },
     {
       test: /\.json/,
@@ -90,6 +91,25 @@ webpack.plugins.push(
     'process.env': {
       NODE_ENV: JSON.stringify(process.env.NODE_ENV)
     }
+  }),
+  new Webpack.DllReferencePlugin({
+    context: path.join(projectDir, 'src'),
+    name: '[name]',
+    manifest: path.join(projectDir, 'dlls', 'react.json')
+  }),
+  new Webpack.DllReferencePlugin({
+    context: path.join(projectDir, 'src'),
+    name: '[name]',
+    manifest: path.join(projectDir, 'dlls', 'redux.json')
+  }),
+  new Webpack.DllReferencePlugin({
+    context: path.join(projectDir, 'src'),
+    name: '[name]',
+    manifest: path.join(projectDir, 'dlls', 'styles.json')
+  }),
+  new HappyPack({
+    id: 'jsx',
+    loaders: ['babel-loader']
   })
 )
 

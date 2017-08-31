@@ -4,7 +4,7 @@ import { render } from 'react-dom'
 import { AppContainer } from 'react-hot-loader'
 import * as OfflinePluginRuntime
   from 'offline-plugin/runtime'
-import App from './App'
+import App from './app'
 
 // semantic less
 import './semantic/semantic.less'
@@ -29,7 +29,7 @@ if (process.env.NODE_ENV === 'production') {
   OfflinePluginRuntime.install()
 }
 
-if (module.hot) {
+if (module.hot && process.env.NODE_ENV === 'development') {
   module.hot.accept()
-  module.hot.accept('./App', () => init())
+  module.hot.accept('./app', () => init())
 }

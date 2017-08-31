@@ -21,13 +21,6 @@ module.exports = {
       },
       comments: false
     }),
-    // standard optimization
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'commons',
-      minChunks: Infinity,
-      async: true,
-      chunks: ['vendor', 'app']
-    }),
     // More minification
     new webpack.optimize.AggressiveMergingPlugin(),
     // HTML optimize
@@ -51,7 +44,7 @@ module.exports = {
     }),
     new CompressionPlugin({
       asset: '[path].gz[query]',
-      algorithm: 'zopfli',
+      algorithm: 'gzip',
       test: /\.js$|\.css$|\.html$/,
       threshold: 10240,
       minRatio: 0.8
